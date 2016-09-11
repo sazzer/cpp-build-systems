@@ -7,5 +7,6 @@ Vagrant.configure(2) do |config|
      sudo apt-get update
      sudo apt-get install -y build-essential llvm clang libboost-all-dev
      sudo update-alternatives --set c++ /usr/bin/clang++
+     sudo apt-get install -y cmake
    SHELL
 end
