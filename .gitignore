@@ -1,1 +1,4 @@
 .vagrant/
+build/
+.lock-waf_*
+.waf-*
