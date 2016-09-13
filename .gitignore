@@ -1,1 +1,17 @@
 .vagrant/
+aclocal.m4
+autom4te.cache/
+build-aux/
+config.log
+config.status
+configure
+Makefile.in
+Makefile
+libtool
+.libs
+lib*.la
+.deps
+.dirstamp
+*.lo
+*.o
+src/executable/executable
