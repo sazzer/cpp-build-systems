@@ -17,10 +17,10 @@ enable_testing()
 # Build a Static library, including unit tests for it
 add_library(static STATIC
   src/static/main/greeting.cpp)
+target_include_directories(static PUBLIC src/static/main)
 add_executable(test_static
   src/static/test/test.cpp
   src/static/test/greeting_test.cpp)
-target_include_directories(test_static PUBLIC src/static/main)
 target_link_libraries(test_static static ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY})
 add_test(static test_static)
 
@@ -28,17 +28,15 @@ add_test(static test_static)
 add_library(shared SHARED
   src/shared/main/add.cpp
   src/shared/main/multiply.cpp)
+target_include_directories(shared PUBLIC src/shared/main)
 add_executable(test_shared
   src/shared/test/test.cpp
   src/shared/test/add_test.cpp
   src/shared/test/multiply_test.cpp)
-target_include_directories(test_shared PUBLIC src/shared/main)
 target_link_libraries(test_shared shared ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY})
 add_test(shared test_shared)
 
 # Build an executable that depends on both the Static and Shared libraries, as well as Boost Date-Time
 add_executable(executable
   src/executable/main/main.cpp)
-target_include_directories(executable PUBLIC src/static/main)
-target_include_directories(executable PUBLIC src/shared/main)
 target_link_libraries(executable static shared ${Boost_DATE_TIME_LIBRARY})
