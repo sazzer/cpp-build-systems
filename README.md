@@ -33,3 +33,17 @@ In order to contribute new build systems, or improve the existing ones please do
   * Please try to add new lines instead of editing the existing one since this will help make merges easier to manage
 * Update the README in the branch with any extra information that is needed, such as how to run the build.
   * Feel free to add credit to the README file as well if you so wish
+
+# Build Instructions
+
+The Autotools system needs to be bootstrapped by first executing:
+
+    $ autoreconf --install --force --verbose
+
+From inside the build directory. At this point the build can proceed like normal by executing:
+
+    $ ./configure
+    $ make
+    $ make check
+
+
