@@ -1,0 +1,68 @@
+// Input file for generating GNU Make makefiles and MSVS project files using
+// bakefile 1.x, see http://www.bakefile.org.
+
+toolsets = gnu vs2015;
+
+// MSVS doesn't require any special options.
+if ($toolset == gnu) {
+    compiler-options += "-std=c++14";
+}
+
+library static {
+    headers {
+        src/static/main/greeting.h
+    }
+
+    sources {
+        src/static/main/greeting.cpp
+    }
+}
+
+program static-test {
+    deps = static;
+
+    includedirs = src/static/main;
+
+    sources {
+        src/static/test/greeting_test.cpp
+        src/static/test/test.cpp
+    }
+}
+
+shared-library shared {
+    headers {
+        src/shared/main/mathematics.h
+    }
+
+    sources {
+        src/shared/main/add.cpp
+        src/shared/main/multiply.cpp
+    }
+}
+
+program shared-test {
+    deps = shared;
+
+    includedirs = src/shared/main;
+
+    sources {
+        src/shared/test/add_test.cpp
+        src/shared/test/multiply_test.cpp
+        src/shared/test/test.cpp
+    }
+}
+
+program executable {
+    deps = shared static;
+
+    // Auto-linking is used under Windows.
+    if ($toolset == gnu) {
+        libs = boost_date_time;
+    }
+
+    includedirs = src/static/main src/shared/main;
+
+    sources {
+        src/executable/main/main.cpp
+    }
+}
