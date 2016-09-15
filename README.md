@@ -28,7 +28,7 @@ The actual project is a set of solutions to various Project Euler challenges. Sp
 * Challenge 3: Largest prime factor - Static + Shared Library
   * Static Library: Determine if number is prime
   * Shared Library: Largest prime factor
-* Channelge 7: 10001st prime - reuse of Static Library
+* Challenge 7: 10001st prime - reuse of Static Library
   * Uses the same Static Library as in Challenge 3
 
 Each artifact will have unit tests for testing that it works correctly. There will also be an overarching executable that pulls all the challenges together into one.

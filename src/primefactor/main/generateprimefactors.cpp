@@ -1,5 +1,5 @@
 #include "primefactors.h"
-#include "isprime.h"
+#include <isprime.h>
 
 /**
  * Generate a list of all of the prime factors of the given number
